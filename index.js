@@ -8,6 +8,8 @@ const port = 3000;
 const app = express();
 app.use(morgan('dev'));
 
+
+//This makes my files available and does the routing.
 app.use(express.static(`${__dirname}/public`))
 
 app.use((request, response, next) => {

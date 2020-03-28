@@ -1,8 +1,12 @@
-const dishRouter = require('./routes/dishRouter');
 const express = require('express');
 const http = require('http');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+
+//Routers
+const dishRouter = require('./routes/dishRouter');
+const leaderRouter = require('./routes/leaderRouter');
+const promotionRouter = require('./routes/promotionRouter');
 
 const hostname = 'localhost';
 const port = 3000;
@@ -13,8 +17,11 @@ app.use(bodyParser.json());
 
 //this is mounting my router.
 app.use('/dishes', dishRouter);
+app.use('/leaders', leaderRouter);
+app.use('/promotions', promotionRouter);
 
 //This makes my files available and does the routing.
+//E.G. Makes my aboutus.html available in http://localhost:3000/aboutus.html
 app.use(express.static(`${__dirname}/public`));
 
 app.use((request, response, next) => {
